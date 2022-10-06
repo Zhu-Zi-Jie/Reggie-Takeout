@@ -33,7 +33,7 @@ public class EmployeeController {
     public R<Employee> login(HttpServletRequest request, @RequestBody Employee employee) {
         //将页面提交的密码进行md5加密
         String password = employee.getPassword();
-        DigestUtils.md5DigestAsHex(password.getBytes());
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
 
         //根据页面提交的用户名username查询数据库
         LambdaQueryWrapper<Employee> queryWrapper = new LambdaQueryWrapper<>();
@@ -63,6 +63,7 @@ public class EmployeeController {
     public R<String> logout(HttpServletRequest request) {
         //清理session中保存的当前登录员工的id
         request.getSession().removeAttribute("employee");
+        log.info("员工已退出成功");
         return R.success("退出成功");
     }
 }
