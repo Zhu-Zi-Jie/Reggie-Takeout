@@ -1,4 +1,4 @@
-package com.zzj.reggie.entity;
+package com.zzj.reggie.dto;
 
 import com.zzj.reggie.entity.Dish;
 import com.zzj.reggie.entity.DishFlavor;

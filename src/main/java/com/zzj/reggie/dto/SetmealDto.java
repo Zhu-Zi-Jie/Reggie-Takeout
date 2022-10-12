@@ -1,0 +1,14 @@
+package com.zzj.reggie.dto;
+
+import com.zzj.reggie.entity.Setmeal;
+import com.zzj.reggie.entity.SetmealDish;
+import lombok.Data;
+import java.util.List;
+
+@Data
+public class SetmealDto extends Setmeal {
+
+    private List<SetmealDish> setmealDishes;
+
+    private String categoryName;
+}

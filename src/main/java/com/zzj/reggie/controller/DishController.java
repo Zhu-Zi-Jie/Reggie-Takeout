@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zzj.reggie.common.R;
 import com.zzj.reggie.entity.Category;
 import com.zzj.reggie.entity.Dish;
-import com.zzj.reggie.entity.DishDto;
+import com.zzj.reggie.dto.DishDto;
 import com.zzj.reggie.service.CategoryService;
 import com.zzj.reggie.service.DishFlavorService;
 import com.zzj.reggie.service.DishService;
@@ -86,6 +86,18 @@ public class DishController {
     @PutMapping
     public R<String> update(@RequestBody DishDto dishDto) {
         dishService.updateWithFlavor(dishDto);
-        return R.success("新增菜品成功");
+        return R.success("修改菜品成功");
+    }
+
+    //根据条件查询对应的菜品数据
+    @GetMapping("/list")
+    public R<List<Dish>> list(Dish dish) {
+        LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(dish.getCategoryId() != null, Dish::getCategoryId, dish.getId());
+        queryWrapper.eq(Dish::getStatus,1);
+        queryWrapper.orderByAsc(Dish::getSort).orderByDesc(Dish::getUpdateTime);
+        List<Dish> list = dishService.list(queryWrapper);
+
+        return R.success(list);
     }
 }

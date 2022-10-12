@@ -3,7 +3,7 @@ package com.zzj.reggie.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zzj.reggie.entity.Dish;
-import com.zzj.reggie.entity.DishDto;
+import com.zzj.reggie.dto.DishDto;
 import com.zzj.reggie.entity.DishFlavor;
 import com.zzj.reggie.mapper.DishMapper;
 import com.zzj.reggie.service.DishFlavorService;
